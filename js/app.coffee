@@ -15,9 +15,10 @@ do ($ = jQuery) ->
   class App
     constructor:() ->
       @loading = false
+      @LIMIT = 100
       @POSTS_PER_PAGE = 2
       @JSON_URL = "http://api.usergrid.com/meriiken/instashion/movies"
-      @JSON_URL = "./dummyjson.json"
+      #@JSON_URL = "./dummyjson.json"
 
       @page = 0
       @options = @getOptions()
@@ -46,6 +47,7 @@ do ($ = jQuery) ->
         document: $ document
         hoge: $ ".hoge"
         container: $ "#postContainer"
+        genreSelectors: $("#genreSelector").find(".dropdown-menu a");
       }
 
 
@@ -55,7 +57,8 @@ do ($ = jQuery) ->
 
     on:() ->
       @app.el.window.on "bottom" ,@loadContents
-      @app.el.document.on "click", ".tag" ,@tagSelect
+      #@app.el.document.on "click", ".tag" ,@tagSelect
+      @app.el.genreSelectors.on "click",@genreSelect
 
     loadContents:() =>
       @app.entries.getEntries();
@@ -63,24 +66,32 @@ do ($ = jQuery) ->
     tagSelect:() =>
       @app.entries.reset()
 
+    genreSelect:(e) =>
+      e.preventDefault()
+      target = e.currentTarget
+      genre = target.dataset.genre
+      @app.entries.reset()
+
   class Entries
     constructor:(@app,@entries) ->
-      @page = 0
-      @lock == false
-      @jsondata;
-      $.getJSON( @app.JSON_URL )
-      .done (data) =>
-        @jsondata = data
-        @entries = data.entities #投稿データ。
-        @app.el.window.trigger("jsonLoaded")
+      @reset();
 
-    reset:() =>
-      @app.el.container.html("")
-      @page = 0;
-      $(window).scrollTop(0);
+    reset:(q = "") =>
+      if !@lock
+        @lock = true
+        $(window).scrollTop(0);
+        @page = 0
+        @jsondata;
+        $.getJSON( @app.JSON_URL , { limit: @app.LIMIT,ql: q})
+        .done (data) =>
+          @jsondata = data
+          @entries = data.entities #投稿データ。
+          @lock == false
+          @app.el.window.trigger("jsonLoaded")
+
 
     getEntries:() =>
-      log @entries
+      console.log @entries
       @render @entries.slice(@page* @app.POSTS_PER_PAGE, (@page+1)* @app.POSTS_PER_PAGE )
       @page = @page + 1;
 

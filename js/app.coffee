@@ -15,9 +15,10 @@ do ($ = jQuery) ->
   class App
     constructor:() ->
       @loading = false
+      @LIMIT = 100
       @POSTS_PER_PAGE = 2
       @JSON_URL = "http://api.usergrid.com/meriiken/instashion/movies"
-      @JSON_URL = "./dummyjson.json"
+      #@JSON_URL = "./dummyjson.json"
 
       @page = 0
       @options = @getOptions()
@@ -46,6 +47,7 @@ do ($ = jQuery) ->
         document: $ document
         hoge: $ ".hoge"
         container: $ "#postContainer"
+        genreSelectors: $("#genreSelector").find(".dropdown-menu a");
       }
 
 
@@ -55,7 +57,8 @@ do ($ = jQuery) ->
 
     on:() ->
       @app.el.window.on "bottom" ,@loadContents
-      @app.el.document.on "click", ".tag" ,@tagSelect
+      #@app.el.document.on "click", ".tag" ,@tagSelect
+      @app.el.genreSelectors.on "click", @genreSelect
 
     loadContents:() =>
       @app.entries.getEntries();
@@ -63,24 +66,35 @@ do ($ = jQuery) ->
     tagSelect:() =>
       @app.entries.reset()
 
+    genreSelect:(e) =>
+      e.preventDefault()
+      target = e.currentTarget
+      tag = target.dataset.tag
+      q = ""
+      if(tag)
+        q += "tag='"+tag+"'"
+        console.log q
+      @app.entries.reset(q)
+
   class Entries
     constructor:(@app,@entries) ->
+      @reset();
+
+    reset:(q = "") =>
+      $(window).scrollTop(0);
       @page = 0
-      @lock == false
       @jsondata;
-      $.getJSON( @app.JSON_URL )
+      $.getJSON( @app.JSON_URL , { limit: @app.LIMIT,ql: q})
       .done (data) =>
         @jsondata = data
+        @app.el.container.html("")
         @entries = data.entities #投稿データ。
+        @lock == false
         @app.el.window.trigger("jsonLoaded")
 
-    reset:() =>
-      @app.el.container.html("")
-      @page = 0;
-      $(window).scrollTop(0);
 
     getEntries:() =>
-      log @entries
+      console.log @entries
       @render @entries.slice(@page* @app.POSTS_PER_PAGE, (@page+1)* @app.POSTS_PER_PAGE )
       @page = @page + 1;
 

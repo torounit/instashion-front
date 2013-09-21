@@ -18,9 +18,9 @@ log = function() {
     function App() {
       var _this = this;
       this.loading = false;
+      this.LIMIT = 100;
       this.POSTS_PER_PAGE = 2;
       this.JSON_URL = "http://api.usergrid.com/meriiken/instashion/movies";
-      this.JSON_URL = "./dummyjson.json";
       this.page = 0;
       this.options = this.getOptions();
       this.el = this.getEl();
@@ -48,7 +48,8 @@ log = function() {
         window: $(window),
         document: $(document),
         hoge: $(".hoge"),
-        container: $("#postContainer")
+        container: $("#postContainer"),
+        genreSelectors: $("#genreSelector").find(".dropdown-menu a")
       };
     };
 
@@ -58,13 +59,14 @@ log = function() {
   Delegator = (function() {
     function Delegator(app) {
       this.app = app;
+      this.genreSelect = __bind(this.genreSelect, this);
       this.tagSelect = __bind(this.tagSelect, this);
       this.loadContents = __bind(this.loadContents, this);
     }
 
     Delegator.prototype.on = function() {
       this.app.el.window.on("bottom", this.loadContents);
-      return this.app.el.document.on("click", ".tag", this.tagSelect);
+      return this.app.el.genreSelectors.on("click", this.genreSelect);
     };
 
     Delegator.prototype.loadContents = function() {
@@ -75,36 +77,55 @@ log = function() {
       return this.app.entries.reset();
     };
 
+    Delegator.prototype.genreSelect = function(e) {
+      var q, tag, target;
+      e.preventDefault();
+      target = e.currentTarget;
+      tag = target.dataset.tag;
+      q = "";
+      if (tag) {
+        q += "tag='" + tag + "'";
+        console.log(q);
+      }
+      return this.app.entries.reset(q);
+    };
+
     return Delegator;
 
   })();
   Entries = (function() {
     function Entries(app, entries) {
-      var _this = this;
       this.app = app;
       this.entries = entries;
       this.parseYouTubeID = __bind(this.parseYouTubeID, this);
       this.render = __bind(this.render, this);
       this.getEntries = __bind(this.getEntries, this);
       this.reset = __bind(this.reset, this);
-      this.page = 0;
-      this.lock === false;
-      this.jsondata;
-      $.getJSON(this.app.JSON_URL).done(function(data) {
-        _this.jsondata = data;
-        _this.entries = data.entities;
-        return _this.app.el.window.trigger("jsonLoaded");
-      });
+      this.reset();
     }
 
-    Entries.prototype.reset = function() {
-      this.app.el.container.html("");
+    Entries.prototype.reset = function(q) {
+      var _this = this;
+      if (q == null) {
+        q = "";
+      }
+      $(window).scrollTop(0);
       this.page = 0;
-      return $(window).scrollTop(0);
+      this.jsondata;
+      return $.getJSON(this.app.JSON_URL, {
+        limit: this.app.LIMIT,
+        ql: q
+      }).done(function(data) {
+        _this.jsondata = data;
+        _this.app.el.container.html("");
+        _this.entries = data.entities;
+        _this.lock === false;
+        return _this.app.el.window.trigger("jsonLoaded");
+      });
     };
 
     Entries.prototype.getEntries = function() {
-      log(this.entries);
+      console.log(this.entries);
       this.render(this.entries.slice(this.page * this.app.POSTS_PER_PAGE, (this.page + 1) * this.app.POSTS_PER_PAGE));
       return this.page = this.page + 1;
     };

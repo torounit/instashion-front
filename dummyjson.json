@@ -1,0 +1,155 @@
+{
+  "action" : "get",
+  "application" : "359b7640-226c-11e3-8bb8-9196ca3369d1",
+  "params" : { },
+  "path" : "/movies",
+  "uri" : "http://api.usergrid.com/meriiken/instashion/movies",
+
+  "entities" : [ {
+    "uuid" : "a09d43fa-2286-11e3-a933-b11f7687e7ba",
+    "type" : "movie",
+    "name" : "513473 フェミニンGAL魅せ♪Sexyオフショルシャーリングコーデ風ワンピ",
+    "created" : 1379744736687,
+    "modified" : 1379744736687,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a09d43fa-2286-11e3-a933-b11f7687e7ba"
+    },
+    "name" : "513473 フェミニンGAL魅せ♪Sexyオフショルシャーリングコーデ風ワンピ",
+    "tag" : "フェミニン",
+    "title" : "513473 フェミニンGAL魅せ♪Sexyオフショルシャーリングコーデ風ワンピ",
+    "url" : "http://www.youtube.com/watch?v=lcrO5OzZKvI&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a1aae36a-2286-11e3-9833-41ae3db8cd92",
+    "type" : "movie",
+    "name" : "513650 ６colorストレッチスカートスーツ２点セット",
+    "created" : 1379744738454,
+    "modified" : 1379744738454,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a1aae36a-2286-11e3-9833-41ae3db8cd92"
+    },
+    "name" : "513650 ６colorストレッチスカートスーツ２点セット",
+    "tag" : "フェミニン",
+    "title" : "513650 ６colorストレッチスカートスーツ２点セット",
+    "url" : "http://www.youtube.com/watch?v=EiHmi6sXCc0&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a2cf181a-2286-11e3-a5b0-8fc800542291",
+    "type" : "movie",
+    "name" : "511987_洗えるスーツシリーズフレアスカート",
+    "created" : 1379744740369,
+    "modified" : 1379744740369,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a2cf181a-2286-11e3-a5b0-8fc800542291"
+    },
+    "name" : "511987_洗えるスーツシリーズフレアスカート",
+    "tag" : "フェミニン",
+    "title" : "511987_洗えるスーツシリーズフレアスカート",
+    "url" : "http://www.youtube.com/watch?v=tP7MwXWl43E&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a3cb797a-2286-11e3-ae3e-396d30cbadd5",
+    "type" : "movie",
+    "name" : "509734_取り外しリボン付き♪フレアスカート",
+    "created" : 1379744742023,
+    "modified" : 1379744742023,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a3cb797a-2286-11e3-ae3e-396d30cbadd5"
+    },
+    "name" : "509734_取り外しリボン付き♪フレアスカート",
+    "tag" : "フェミニン",
+    "title" : "509734_取り外しリボン付き♪フレアスカート",
+    "url" : "http://www.youtube.com/watch?v=cdJZiVNTO60&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a4d4fa3a-2286-11e3-94ad-932d9668f774",
+    "type" : "movie",
+    "name" : "スカート【LeSentier(ルセンティエ)】LS0070371",
+    "created" : 1379744743763,
+    "modified" : 1379744743763,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a4d4fa3a-2286-11e3-94ad-932d9668f774"
+    },
+    "name" : "スカート【LeSentier(ルセンティエ)】LS0070371",
+    "tag" : "フェミニン",
+    "title" : "スカート【LeSentier(ルセンティエ)】LS0070371",
+    "url" : "http://www.youtube.com/watch?v=Xzn7ZUFsx4w&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a5ef91fa-2286-11e3-ae63-f9414f1b2a2e",
+    "type" : "movie",
+    "name" : "スカート【amitie(アミティエ)】AM14936",
+    "created" : 1379744745615,
+    "modified" : 1379744745615,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a5ef91fa-2286-11e3-ae63-f9414f1b2a2e"
+    },
+    "name" : "スカート【amitie(アミティエ)】AM14936",
+    "tag" : "フェミニン",
+    "title" : "スカート【amitie(アミティエ)】AM14936",
+    "url" : "http://www.youtube.com/watch?v=otpz65LTY5U&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a719e12a-2286-11e3-b12a-e3f6a1c9df49",
+    "type" : "movie",
+    "name" : "ジャンパースカート【ZELU（ゼル）】Z11671236",
+    "created" : 1379744747570,
+    "modified" : 1379744747570,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a719e12a-2286-11e3-b12a-e3f6a1c9df49"
+    },
+    "name" : "ジャンパースカート【ZELU（ゼル）】Z11671236",
+    "tag" : "フェミニン",
+    "title" : "ジャンパースカート【ZELU（ゼル）】Z11671236",
+    "url" : "http://www.youtube.com/watch?v=FevrhZNjIKw&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a81f6a4a-2286-11e3-b8ec-b399fd46dcd1",
+    "type" : "movie",
+    "name" : "益若つばさプロデュース- [つばコレ] ハードフェミニン",
+    "created" : 1379744749284,
+    "modified" : 1379744749284,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a81f6a4a-2286-11e3-b8ec-b399fd46dcd1"
+    },
+    "name" : "益若つばさプロデュース- [つばコレ] ハードフェミニン",
+    "tag" : "フェミニン",
+    "title" : "益若つばさプロデュース- [つばコレ] ハードフェミニン",
+    "url" : "http://www.youtube.com/watch?v=1rHNDOA-BZ0&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "a96c0e8a-2286-11e3-97b7-83660c83ae70",
+    "type" : "movie",
+    "name" : "【NUANCEPRIX】クリクリフェイクファーコート＆スクエアドットスカート",
+    "created" : 1379744751464,
+    "modified" : 1379744751464,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/a96c0e8a-2286-11e3-97b7-83660c83ae70"
+    },
+    "name" : "【NUANCEPRIX】クリクリフェイクファーコート＆スクエアドットスカート",
+    "tag" : "フェミニン",
+    "title" : "【NUANCEPRIX】クリクリフェイクファーコート＆スクエアドットスカート",
+    "url" : "http://www.youtube.com/watch?v=UBZGTY8XuDo&feature=youtube_gdata_player"
+  }, {
+    "uuid" : "aa70863a-2286-11e3-8f14-69fac687ad32",
+    "type" : "movie",
+    "name" : "スカート【DES_FILLES_A_LA_VANILLE】CR46151",
+    "created" : 1379744753171,
+    "modified" : 1379744753171,
+    "category" : "スカート",
+    "metadata" : {
+      "path" : "/movies/aa70863a-2286-11e3-8f14-69fac687ad32"
+    },
+    "name" : "スカート【DES_FILLES_A_LA_VANILLE】CR46151",
+    "tag" : "フェミニン",
+    "title" : "スカート【DES_FILLES_A_LA_VANILLE】CR46151",
+    "url" : "http://www.youtube.com/watch?v=8l4f3meMxTA&feature=youtube_gdata_player"
+  } ],
+  "timestamp" : 1379744907226,
+  "duration" : 125,
+  "organization" : "meriiken",
+  "applicationName" : "instashion",
+  "cursor" : "LTU2ODc0MzQzOnFuQ0dPaUtHRWVPUEZHbjZ4b2V0TWc",
+  "count" : 10
+}

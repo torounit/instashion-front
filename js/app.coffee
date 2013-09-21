@@ -17,7 +17,7 @@ do ($ = jQuery) ->
       @loading = false
       @POSTS_PER_PAGE = 2
       @JSON_URL = "http://api.usergrid.com/meriiken/instashion/movies"
-      #@JSON_URL = "/simplejson.json"
+      @JSON_URL = "./dummyjson.json"
 
       @page = 0
       @options = @getOptions()
@@ -92,13 +92,14 @@ do ($ = jQuery) ->
         ytID = @parseYouTubeID(val.url)
         ins_imgs = val.instagram_images
         instagram = ""
-        for photo in val.instagram_images
-          instagram += """
-              <div class="col-lg-4 col-xs-6">
-                  <h2>Heading</h2>
-                  <p><a href="#{photo.url}"><img src="#{photo.img}" width="100" height="100"></a></p>
-              </div>
-            """
+        if ins_imgs
+          for photo in val.instagram_images
+            instagram += """
+                <div class="col-lg-4 col-xs-6">
+                    <h2>Heading</h2>
+                    <p><a href="#{photo.url}"><img src="#{photo.img}" width="100" height="100"></a></p>
+                </div>
+              """
 
 
 

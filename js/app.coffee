@@ -108,7 +108,7 @@ do ($ = jQuery) ->
               <h2>#{val.title}</h2>
               <div class="row entry">
                   <p class="frame_youtube">
-                      <a href="https://youtube.googleapis.com/v/#{ytID}?rel=0" class="youtube-movie"><img src="http://img.youtube.com/vi/#{ytID}/mqdefault.jpg" alt=""></a>
+                      <a href="https://youtube.googleapis.com/v/#{ytID}?rel=0" class="youtube-movie thumbnail"><img src="http://img.youtube.com/vi/#{ytID}/0.jpg" alt=""></a>
                   </p>
                   <p>
                       <a class="btn btn-primary" href="#">View details ≫</a>

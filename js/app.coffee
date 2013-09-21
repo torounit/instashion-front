@@ -58,7 +58,7 @@ do ($ = jQuery) ->
     on:() ->
       @app.el.window.on "bottom" ,@loadContents
       #@app.el.document.on "click", ".tag" ,@tagSelect
-      @app.el.genreSelectors.on "click",@genreSelect
+      @app.el.genreSelectors.on "click", @genreSelect
 
     loadContents:() =>
       @app.entries.getEntries();
@@ -69,25 +69,28 @@ do ($ = jQuery) ->
     genreSelect:(e) =>
       e.preventDefault()
       target = e.currentTarget
-      genre = target.dataset.genre
-      @app.entries.reset()
+      tag = target.dataset.tag
+      q = ""
+      if(tag)
+        q += "tag='"+tag+"'"
+        console.log q
+      @app.entries.reset(q)
 
   class Entries
     constructor:(@app,@entries) ->
       @reset();
 
     reset:(q = "") =>
-      if !@lock
-        @lock = true
-        $(window).scrollTop(0);
-        @page = 0
-        @jsondata;
-        $.getJSON( @app.JSON_URL , { limit: @app.LIMIT,ql: q})
-        .done (data) =>
-          @jsondata = data
-          @entries = data.entities #投稿データ。
-          @lock == false
-          @app.el.window.trigger("jsonLoaded")
+      $(window).scrollTop(0);
+      @page = 0
+      @jsondata;
+      $.getJSON( @app.JSON_URL , { limit: @app.LIMIT,ql: q})
+      .done (data) =>
+        @jsondata = data
+        @app.el.container.html("")
+        @entries = data.entities #投稿データ。
+        @lock == false
+        @app.el.window.trigger("jsonLoaded")
 
 
     getEntries:() =>

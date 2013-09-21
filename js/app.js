@@ -78,11 +78,16 @@ log = function() {
     };
 
     Delegator.prototype.genreSelect = function(e) {
-      var genre, target;
+      var q, tag, target;
       e.preventDefault();
       target = e.currentTarget;
-      genre = target.dataset.genre;
-      return this.app.entries.reset();
+      tag = target.dataset.tag;
+      q = "";
+      if (tag) {
+        q += "tag='" + tag + "'";
+        console.log(q);
+      }
+      return this.app.entries.reset(q);
     };
 
     return Delegator;
@@ -104,21 +109,19 @@ log = function() {
       if (q == null) {
         q = "";
       }
-      if (!this.lock) {
-        this.lock = true;
-        $(window).scrollTop(0);
-        this.page = 0;
-        this.jsondata;
-        return $.getJSON(this.app.JSON_URL, {
-          limit: this.app.LIMIT,
-          ql: q
-        }).done(function(data) {
-          _this.jsondata = data;
-          _this.entries = data.entities;
-          _this.lock === false;
-          return _this.app.el.window.trigger("jsonLoaded");
-        });
-      }
+      $(window).scrollTop(0);
+      this.page = 0;
+      this.jsondata;
+      return $.getJSON(this.app.JSON_URL, {
+        limit: this.app.LIMIT,
+        ql: q
+      }).done(function(data) {
+        _this.jsondata = data;
+        _this.app.el.container.html("");
+        _this.entries = data.entities;
+        _this.lock === false;
+        return _this.app.el.window.trigger("jsonLoaded");
+      });
     };
 
     Entries.prototype.getEntries = function() {

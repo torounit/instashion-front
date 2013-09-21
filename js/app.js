@@ -122,7 +122,7 @@ log = function() {
           photo = _ref[_i];
           instagram += "<div class=\"col-lg-4 col-xs-6\">\n    <h2>Heading</h2>\n    <p><a href=\"" + photo.url + "\"><img src=\"" + photo.img + "\" width=\"100\" height=\"100\"></a></p>\n</div>";
         }
-        return items.push("<div class=\"col-6 col-sm-6 col-sm-6-height col-lg-4 col-xs-6\">\n    <h2>" + val.title + "</h2>\n    <div class=\"row entry\">\n        <p class=\"frame_youtube\">\n            <a href=\"https://youtube.googleapis.com/v/" + ytID + "?rel=0\" class=\"youtube-movie\"><img src=\"http://img.youtube.com/vi/" + ytID + "/mqdefault.jpg\" alt=\"\"></a>\n        </p>\n        <p>\n            <a class=\"btn btn-primary\" href=\"#\">View details ≫</a>\n        </p>\n\n        <div class=\"row\">\n        " + instagram + "\n\n        </div>\n    </div>\n</div>");
+        return items.push("<div class=\"col-6 col-sm-6 col-sm-6-height col-lg-4 col-xs-6\">\n    <h2>" + val.title + "</h2>\n    <div class=\"row entry\">\n        <p class=\"frame_youtube\">\n            <a href=\"https://youtube.googleapis.com/v/" + ytID + "?rel=0\" class=\"youtube-movie\"><img src=\"http://img.youtube.com/vi/" + ytID + "/0.jpg\" alt=\"\"></a>\n        </p>\n        <p>\n            <a class=\"btn btn-primary\" href=\"#\">View details ≫</a>\n        </p>\n\n        <div class=\"row\">\n        " + instagram + "\n\n        </div>\n    </div>\n</div>");
       });
       return this.app.el.container.append(items.join(""));
     };
